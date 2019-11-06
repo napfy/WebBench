@@ -14,6 +14,6 @@ Drive Benchmark on web.
 
 ### Run in Docker 
 - docker pull yuef/webbench
-- docker run --rm -d -e HOST=$HOST -e PORT=$PORT -p $PORT:$PORT  yuef/webbench
-- open browser url http://$HOST:$PORT/
+- docker run --rm -d -e PORT=$PORT -p $PORT:$PORT  yuef/webbench
+- open browser url http://your_host_ip:$PORT/
 
