@@ -57,7 +57,7 @@ export default {
       return this.cmdsList_index < this.cmdsList.length
     },
     runcmd (cmdgrp) {
-      this.$axios.post('/rungroup', {
+      this.$axios.post(document.location.href + 'api/rungroup', {
         'precmd': cmdgrp.precmd,
         'cmd': cmdgrp.xcmd,
         'fincmd': cmdgrp.fincmd,
@@ -105,7 +105,7 @@ export default {
     },
     saveGlobalParams () {
       this.show_drawer = false
-      this.$axios.post('/saveparams', {
+      this.$axios.post(document.location.href + 'api/saveparams', {
         'paramsbody': this.global_params
       }).then((response) => {
         const data = response.data

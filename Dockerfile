@@ -3,7 +3,8 @@ WORKDIR /app
 RUN apk update
 RUN apk add apache2-utils
 COPY package.json . 
-RUN cd /app && npm install
+RUN cd /app
+RUN npm install
 COPY components ./components
 COPY jsconfig.json .
 COPY nuxt.config.js . 
@@ -12,5 +13,7 @@ COPY pages ./pages
 COPY server ./server
 COPY plugins ./plugins 
 RUN npm run build
-EXPOSE 3010
-CMD [ "npm", "run", "start" ]
+ENV PORT 3000
+ENV HOST localhost
+EXPOSE $PORT
+CMD ["HOST=$HOST", "PORT=$PORT",  "npm", "run", "start" ]

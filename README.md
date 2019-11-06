@@ -8,11 +8,12 @@ Do Benchmark with web UI.
 - install Node 
 - git clone https://github.com/napfy/WebBench
 - cd WebBench 
-- node app.js
-- open browser url http://127.0.0.1:3010/
+- npm run build
+- npm run start
+- open browser url http://localhost:3000/
 
 ### Run in Docker 
 - docker pull yuef/webbench
-- docker run --rm -d -p 3010:3010  yuef/webbench
-- open browser url http://your_local_ip:3010/
+- docker run --rm -d -e HOST=$HOST -e PORT=$PORT -p $PORT:$PORT  yuef/webbench
+- open browser url http://$HOST:$PORT/
 

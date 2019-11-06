@@ -56,8 +56,6 @@ module.exports = {
     }
   },
   axios: {
-    prefix: '/api',
-    host: document.location.hostname,
-    port: document.location.port
+    prefix: '/api'
   }
 }
