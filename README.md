@@ -14,5 +14,5 @@ Do Benchmark with web UI.
 ### Run in Docker 
 - docker pull yuef/webbench
 - docker run --rm -d -p 3010:3010  yuef/webbench
-- open browser url http://127.0.0.1:3010/
+- open browser url http://your_local_ip:3010/
 

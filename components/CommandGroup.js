@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       name_edit: false,
-      url: '127.0.0.1/',
+      url: document.location.hostname || '127.0.0.1/',
       useinit: false,
       usefinish: false,
       keepalive: true,
