@@ -12,6 +12,7 @@ export default {
     return {
       curtab: 'setting',
       logs: [],
+      tipnum: 0,
       height: 60,
       loading: false,
       chartdata: {
@@ -81,6 +82,7 @@ export default {
       if (data.err !== undefined) {
         for (let j = 0; j < data.err.length; j++) {
           this.log(data.err[j])
+          this.tipnum += 1
         }
       }
       if (data.time !== undefined) {
@@ -92,22 +94,17 @@ export default {
     changeLoading (state) {
       this.loading = state
     },
-    showTips (msg) {
-      if (msg) {
-        this.$message({
-          showClose: true,
-          message: msg,
-          type: 'error'
-        })
-      }
-      this.curtab = 'setting'
-    },
     log (msg) {
       const dt = new Date()
       this.logs.push(dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds() + ' ' + msg)
     },
     clearLog () {
       this.logs = []
+    },
+    tabChange () {
+      if (this.curtab === 'logs') {
+        this.tipnum = 0
+      }
     },
     getName (guid) {
       const cmds = this.$refs.cfm.cmdsList

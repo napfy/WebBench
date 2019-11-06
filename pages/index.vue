@@ -4,12 +4,12 @@
       <div class="cont">
         <el-row>
           <el-col :span="22" :offset="1">
-            <el-tabs v-model="curtab" type="border-card">
+            <el-tabs v-model="curtab" type="border-card" @tab-click="tabChange">
               <el-tab-pane name="setting">
                 <span slot="label"> <i class="el-icon-s-operation" /> 基准测试设置</span>
                 <el-row>
                   <el-col :span="22" :offset="1">
-                    <command-form ref="cfm" @recivedata="reciveData" @runbench="runWebBench" @loading="changeLoading" @showtips="showTips" />
+                    <command-form ref="cfm" @recivedata="reciveData" @runbench="runWebBench" @loading="changeLoading" />
                   </el-col>
                 </el-row>
               </el-tab-pane>
@@ -29,7 +29,10 @@
                 </el-row>
               </el-tab-pane>
               <el-tab-pane name="logs">
-                <span slot="label"><i class="el-icon-s-order" /> 基准测试输出</span>
+                <span slot="label"><i class="el-icon-s-order" /> 基准测试输出
+                  <el-badge v-if="tipnum>0" :value="tipnum" class="item" />
+                </span>
+
                 <log-panel class="min800" :logs="logs" @clearlog="clearLog" />
               </el-tab-pane>
             </el-tabs>

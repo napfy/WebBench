@@ -70,7 +70,7 @@ export default {
         if (response.status === 200) {
           // 处理数据 解析
           if (data.code === 0) {
-            // 命令成功执行 TODO 数据参数
+            // 命令成功执行
             this.$emit('recivedata', { 'log': data.log, 'err': data.err, 'time': data.time, 'guid': cmdgrp.guid })
             if (this.hasNextGroup()) {
               this.runcmd(this.nextGroup())
@@ -93,7 +93,6 @@ export default {
       }).catch((err) => {
         this.$emit('recivedata', { err: [err] })
         this.$emit('loading', false)
-        this.$emit('showtips', '命令执行出错，请检查您的命令是否正确执行')
       })
     },
     addBench () {
