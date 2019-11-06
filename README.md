@@ -1,5 +1,5 @@
 # WebBench
-Drive Benchmark with web UI.
+Drive Benchmark on web.
 
 ## How to
 
