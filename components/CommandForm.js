@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     runBench () {
-      this.$emit('initgraph')
+      this.$emit('runbench')
       this.saveGlobalParams()
       this.cur_runtimes = this.runtimes > 0 ? this.runtimes : 1
       this.buildAllCmd()
@@ -48,8 +48,10 @@ export default {
     nextGroup () {
       this.cmdsList_index++
       if (this.cmdsList_index < this.cmdsList.length) {
+        this.$emit('loading', true)
         return this.cmdsList[this.cmdsList_index]
       } else {
+        this.$emit('loading', false)
         return null
       }
     },
@@ -72,6 +74,8 @@ export default {
             this.$emit('recivedata', { 'log': data.log, 'err': data.err, 'time': data.time, 'guid': cmdgrp.guid })
             if (this.hasNextGroup()) {
               this.runcmd(this.nextGroup())
+            } else {
+              this.$emit('loading', false)
             }
           }
           if (data.code < 0) {
@@ -83,10 +87,13 @@ export default {
             this.$emit('recivedata', { 'log': data.log, 'err': data.err })
           }
         } else {
-          this.$emit('recivedata', { 'err': 'status code:' + data.status })
+          this.$emit('recivedata', { 'err': ['status code:' + data.status] })
+          this.$emit('loading', false)
         }
       }).catch((err) => {
-        this.$emit('recivedata', { err })
+        this.$emit('recivedata', { err: [err] })
+        this.$emit('loading', false)
+        this.$emit('showtips', '命令执行出错，请检查您的命令是否正确执行')
       })
     },
     addBench () {
@@ -123,10 +130,10 @@ export default {
             this.$emit('recivedata', { 'log': data.log, 'err': data.err })
           }
         } else {
-          this.$emit('recivedata', { 'err': 'status code:' + data.status })
+          this.$emit('recivedata', { 'err': ['status code:' + data.status] })
         }
       }).catch((err) => {
-        this.$emit('recivedata', { err })
+        this.$emit('recivedata', { err: [err] })
       })
     },
     buildCmd (obj) {

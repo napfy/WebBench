@@ -13,6 +13,7 @@ export default {
       curtab: 'setting',
       logs: [],
       height: 60,
+      loading: false,
       chartdata: {
         labels: ['性能测试'],
         datasets: [
@@ -63,10 +64,11 @@ export default {
       }
       return color
     },
-    initGraph () {
+    runWebBench () {
       this.curtab = 'graph'
       this.log('开始新的测试，初始化图表...')
       this.chartdata.datasets = []
+      this.loading = true
       this.$refs.graph.update()
     },
     reciveData (data) {
@@ -86,6 +88,19 @@ export default {
         this.chartdata.datasets.push({ label: this.getName(data.guid), data: [data.time], minBarLength: 20, barPercentage: 0.8, backgroundColor: this.getNextColor(), maxBarThickness: 50 })
         this.$refs.graph.update()
       }
+    },
+    changeLoading (state) {
+      this.loading = state
+    },
+    showTips (msg) {
+      if (msg) {
+        this.$message({
+          showClose: true,
+          message: msg,
+          type: 'error'
+        })
+      }
+      this.curtab = 'setting'
     },
     log (msg) {
       const dt = new Date()

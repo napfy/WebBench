@@ -14,6 +14,6 @@ COPY server ./server
 COPY plugins ./plugins 
 RUN npm run build
 ENV PORT 3000
-ENV HOST localhost
+ENV HOST 0.0.0.0
 EXPOSE $PORT
-CMD ["HOST=$HOST", "PORT=$PORT",  "npm", "run", "start" ]
+CMD HOST=$HOST PORT=$PORT npm run start

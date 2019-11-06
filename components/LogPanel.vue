@@ -1,19 +1,21 @@
 <template>
   <div>
-  <el-row class="blank">
-    <el-col :span="20" :offset="1">
-      <div class="output">
-        <div class="log" v-for="log in logs" v-bind:key="log">
-          {{log}}
+    <el-row class="blank">
+      <el-col :span="20" :offset="1">
+        <div class="output">
+          <div v-for="log in logs" :key="log" class="log">
+            {{ log }}
+          </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="1" :offset="10">
-      <el-button @click="clearLog">清除日志</el-button>
-    </el-col>
-  </el-row>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="1" :offset="10">
+        <el-button @click="clearLog">
+          清除日志
+        </el-button>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <style>
