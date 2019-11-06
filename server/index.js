@@ -1,14 +1,11 @@
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
-// const route = require('koa-router')
 
-const config = require('../nuxt.config.ts')
+const config = require('../nuxt.config')
 const api = require('./api')
 
 const app = new Koa()
-
-// const rt = route()
 
 // Import and Set Nuxt.js options
 
@@ -18,7 +15,7 @@ async function start () {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)
   const {
-    host = process.env.HOST || '127.0.0.1',
+    host = process.env.HOST || '0.0.0.0',
     port = process.env.PORT || 3010
   } = nuxt.options.server
 
@@ -30,9 +27,6 @@ async function start () {
     await nuxt.ready()
   }
 
-  // api.init(app, rt, koabody)
-
-  //  app.use(rt.routes())
   app.use(api())
 
   app.use((ctx) => {

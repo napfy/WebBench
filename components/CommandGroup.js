@@ -16,7 +16,7 @@ export default {
   data () {
     return {
       name_edit: false,
-      url: '127.0.0.1:8002/',
+      url: '127.0.0.1/',
       useinit: false,
       usefinish: false,
       keepalive: true,
