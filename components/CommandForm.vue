@@ -59,7 +59,7 @@
         </el-button>
       </el-col>
       <el-col :span="2">
-        <el-button type="warning" icon="el-icon-arrow-right" @click="runBench">
+        <el-button type="warning" icon="el-icon-arrow-right" @click="checkBench">
           运行测试命令
         </el-button>
       </el-col>

@@ -13,7 +13,7 @@ export default {
       curtab: 'setting',
       logs: [],
       tipnum: 0,
-      height: 60,
+      height: 180,
       loading: false,
       chartdata: {
         labels: ['性能测试'],
@@ -113,6 +113,18 @@ export default {
           return cmds[i].name
         }
       }
+    },
+    showTotal (total) {
+      const data = total.data
+      const cmds = this.$refs.cfm.cmdsList
+      //      this.chartdata.datasets = []
+      console.log('showtotal')
+      console.log(data)
+      console.log(cmds)
+      for (let i = 0; i < data.length; i++) {
+        this.chartdata.datasets.push({ label: cmds[i].name + '平均值', data: [data[i]], minBarLength: 20, barPercentage: 0.8, backgroundColor: this.getNextColor(), maxBarThickness: 50 })
+      }
+      this.$refs.graph.update()
     }
   }
 }

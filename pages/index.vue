@@ -9,7 +9,7 @@
                 <span slot="label"> <i class="el-icon-s-operation" /> 基准测试设置</span>
                 <el-row>
                   <el-col :span="22" :offset="1">
-                    <command-form ref="cfm" @recivedata="reciveData" @runbench="runWebBench" @loading="changeLoading" />
+                    <command-form ref="cfm" @recivedata="reciveData" @runbench="runWebBench" @loading="changeLoading" @showtotal="showTotal" />
                   </el-col>
                 </el-row>
               </el-tab-pane>

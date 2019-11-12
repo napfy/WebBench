@@ -3,7 +3,7 @@
     <el-row class="blank">
       <el-col :span="20" :offset="1">
         <div class="output">
-          <div v-for="log in logs" :key="log" class="log">
+          <div v-for="log in logs" :key="log.index" class="log">
             {{ log }}
           </div>
         </div>
